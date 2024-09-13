@@ -18,10 +18,13 @@
             <img src="mermeghost.png">
             MERMELADA GAMES
         </div>
+		<button class="menu-toggle" aria-label="Toggle navigation">
+			&#9776;
+		</button>
         <div class="nav-links">
             <a href="#home">Home</a>
-            <a href="#about">About</a>
             <a href="#projects">Games</a>
+			<a href="#about">About</a>
         </div>
     </header>
     <section id="home" class="home clearfix">
@@ -31,6 +34,44 @@
             <a><i class="ri-arrow-down-double-line"></i></a>
         </div>
     </section>
+
+	<section id="projects" class="projects">
+		<h1>OUR PROJECTS</h1>
+		<div class="flexing">
+			<video src="mind.mp4" autoplay controls muted></video>
+			<div class="flex">
+				<h2>Mind's Abyss</h2>
+				<p>A captivating 3D cooperative platformer adventure developed for the 7th Gran CITM Game Jam, where players
+					dive into the
+					subconscious realm where a nightmare and a dream must unite to rescue a dying mind.
+					Navigate through surreal landscapes, overcome obstacles, and solve puzzles in this award-winning game.
+					Winner of the
+					"Best Game" award.</p>
+			</div>
+		</div>
+	
+		<div class="flexing">
+			<div class="flex2">
+				<h2>Stelar</h2>
+				<p>A serene journey of logic and creativity under stars. In this tranquil 2D puzzle game, dive in the cosmic
+					landscapes as you craft constellations with soothing melodies. With no time pressure, immerse yourself
+					in the wonders of the universe at your own pace. Winner of the esteemed "Premi Ajuntament Terrassa"
+					award.</p>
+			</div>
+			<video src="Stelar_trailer.mp4" autoplay controls muted></video>
+		</div>
+	
+		<div class="flexing">
+			<img src="Dit_Deu.png">
+			<div class="flex">
+				<h2>Dit Déu</h2>
+				<p>Step into the divine shoes of the mighty Greek god, Zeus, in this 2D strategy game. Command a mythical
+					army with a tap of your finger and unleash your divine powers to repel enemy hordes. Create your troops,
+					strategically position them, and harness powerful spells to defend Athena in this epic strategic battle.
+					Winner of the "Best Game" award.</p>
+			</div>
+		</div>
+	</section>
 
     <section id="about" class="about">
         <h1>ABOUT US</h1>
@@ -134,39 +175,6 @@
 		</div>
 	</section>
 
-    <section id="projects" class="projects">
-        <h1>OUR PROJECTS</h1>
-      <div class="flexing">
-        <video src="mind.mp4" autoplay controls muted></video>
-        <div class="flex">
-        <h2>Mind's Abyss</h2>
-        <p>A captivating 3D cooperative platformer adventure developed for the 7th Gran CITM Game Jam, where players dive into the
-          subconscious realm where a nightmare and a dream must unite to rescue a dying mind.
-          Navigate through surreal landscapes, overcome obstacles, and solve puzzles in this award-winning game. Winner of the
-          "Best Game" award.</p>
-      </div>
-      </div>
-      
-      <div class="flexing">
-        <div class="flex2">
-        <h2>Stelar</h2>
-        <p>A serene journey of logic and creativity under stars. In this tranquil 2D puzzle game, dive in the cosmic landscapes as you craft constellations with soothing melodies. With no time pressure, immerse yourself in the wonders of the universe at your own pace. Winner of the esteemed "Premi Ajuntament Terrassa" award.</p>
-      </div>
-      <video src="Stelar_trailer.mp4" autoplay controls muted></video>
-      </div>
-      
-      <div class="flexing">
-        <img src="Dit_Deu.png">
-        <div class="flex">
-        <h2>Dit Déu</h2>
-        <p>Step into the divine shoes of the mighty Greek god, Zeus, in this 2D strategy game. Command a mythical army with a tap of your finger and unleash your divine powers to repel enemy hordes. Create your troops, strategically position them, and harness powerful spells to defend Athena in this epic strategic battle. Winner of the "Best Game" award.</p>
-      </div>
-      </div>
-    </section>
-      
-      <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-      <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
     <aside class="aside-icons">
         <a href="https://www.youtube.com/@MermeladaGames"><i class="ri-youtube-fill"></i></a>
         <a href="https://www.linkedin.com/company/mermeladagames/"><i class="ri-linkedin-box-fill"></i></a>
@@ -177,14 +185,7 @@
         <p>gamesmermelada@gmail.com</p>
     </footer>
 
-    <div id="previewModal" class="modal">
-        <span class="close" onclick="closePreviewModal()">&times;</span>
-        <img id="previewImage" class="modal-content">
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>
-    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
 </body>
 

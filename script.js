@@ -221,25 +221,49 @@ function closePreviewModal() {
 "use strict";
 
 function qs(selector, all = false) {
-  return all ? document.querySelectorAll(selector) : document.querySelector(selector);
+    return all ? document.querySelectorAll(selector) : document.querySelector(selector);
 }
 
 const homeIcon = qs('a > i.ri-arrow-down-double-line');
 const aboutme = qs('.about');
 
 homeIcon.addEventListener('click', () => {
-    aboutme.scrollIntoView({ behavior: 'smooth' });
-  });
+    scrollToSection(aboutme);
+});
 
-const navLinks = document.querySelectorAll('.nav-links a');
+const navLinksA = document.querySelectorAll('.nav-links a');
 
-navLinks.forEach(link => {
-  link.addEventListener('click', (event) => {
+navLinksA.forEach(link => {
+    link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        scrollToSection(targetElement);
+    });
+});
 
-    event.preventDefault();
+function scrollToSection(element) {
+    const headerHeight = document.querySelector('header').offsetHeight;
+    const offset = 20;
 
-    const targetId = link.getAttribute('href').substring(1);
+    window.scrollTo({
+        top: element.offsetTop - headerHeight - offset,
+        behavior: 'smooth'
+    });
+}
 
-    document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
-  });
+const toggleButton = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+const navItems = navLinks.querySelectorAll('a');
+
+function toggleMenu() {
+    navLinks.classList.toggle('nav-active');
+}
+
+toggleButton.addEventListener('click', toggleMenu);
+
+navItems.forEach(item => {
+    item.addEventListener('click', () => {
+        navLinks.classList.remove('nav-active');
+    });
 });
