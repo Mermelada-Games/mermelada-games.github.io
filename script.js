@@ -4,8 +4,6 @@ var height = canvas.height = window.innerHeight * 0.75;
 document.body.appendChild(canvas);
 var gl = canvas.getContext('webgl');
 
-var mouse = { x: 0, y: 0 };
-
 var numMetaballs = 16;
 var metaballs = [];
 
@@ -24,8 +22,6 @@ var vertexShaderSrc = `
 attribute vec2 position;
 
 void main() {
-// position specifies only x and y.
-// We set z to be 0.0, and w to be 1.0
 gl_Position = vec4(position, 0.0, 1.0);
 }
 `;
@@ -53,19 +49,10 @@ sum += (radius * radius) / (dx * dx + dy * dy);
 }
 
 if (sum >= 0.99) {
-    // Color base rosado
     vec3 baseColor = vec3(0.7137254901960784, 0, 0); // rosado claro
-
-    // Color del borde rojo
     vec3 borderColor = vec3(0.6588235294117647, 0.0, 0.0); // rojo
-
-    // Calculamos el factor de mezcla basado en la distancia desde el borde
     float borderFactor = max(0.0, 1.0 - (sum - 0.99) * 100.0);
-
-    // Mezclamos los colores base y del borde
     vec3 finalColor = mix(baseColor, borderColor, borderFactor);
-
-    // Establecemos el color final
     gl_FragColor = vec4(finalColor, 1.0);
     return;
 }
@@ -85,10 +72,10 @@ gl.linkProgram(program);
 gl.useProgram(program);
 
 var vertexData = new Float32Array([
-    -1.0, 1.0, // top left
-    -1.0, -1.0, // bottom left
-    1.0, 1.0, // top right
-    1.0, -1.0, // bottom right
+    -1.0, 1.0,
+    -1.0, -1.0,
+    1.0, 1.0,
+    1.0, -1.0,
 ]);
 var vertexDataBuffer = gl.createBuffer();
 gl.bindBuffer(gl.ARRAY_BUFFER, vertexDataBuffer);
@@ -96,13 +83,7 @@ gl.bufferData(gl.ARRAY_BUFFER, vertexData, gl.STATIC_DRAW);
 
 var positionHandle = getAttribLocation(program, 'position');
 gl.enableVertexAttribArray(positionHandle);
-gl.vertexAttribPointer(positionHandle,
-    2, // position is a vec2
-    gl.FLOAT, // each component is a float
-    gl.FALSE, // don't normalize values
-    2 * 4, // two 4 byte float components per vertex
-    0 // offset into each span of vertex data
-);
+gl.vertexAttribPointer(positionHandle, 2, gl.FLOAT, gl.FALSE, 2 * 4, 0);
 
 var metaballsHandle = getUniformLocation(program, 'metaballs');
 
@@ -129,7 +110,6 @@ function loop() {
     }
     gl.uniform3fv(metaballsHandle, dataToSendToGPU);
 
-    //Draw
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
 
     requestAnimationFrame(loop);
@@ -163,11 +143,6 @@ function getAttribLocation(program, name) {
     return attributeLocation;
 }
 
-canvas.onmousemove = function (e) {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-}
-
 window.addEventListener('resize', function () {
     width = canvas.width = window.innerWidth * 0.75;
     height = canvas.height = window.innerHeight * 0.75;
@@ -186,64 +161,14 @@ window.addEventListener('resize', function () {
     }
 });
 
-
-
-var dots = document.querySelectorAll('.dot');
-
-var currentIndex = 0;
-
-function updateDots() {
-    dots.forEach(function (dot, index) {
-        if (index === currentIndex) {
-            dot.classList.add('active');
-        } else {
-            dot.classList.remove('active');
-        }
-    });
-}
-
-updateDots();
-
-function previewImage(imageSrc) {
-    var modal = document.getElementById('previewModal');
-    var previewImage = document.getElementById('previewImage');
-    previewImage.src = imageSrc;
-    modal.style.display = 'block';
-}
-
-function closePreviewModal() {
-    var modal = document.getElementById('previewModal');
-    modal.style.display = 'none';
-}
-
-
-
 "use strict";
 
 function qs(selector, all = false) {
     return all ? document.querySelectorAll(selector) : document.querySelector(selector);
 }
 
-const homeIcon = qs('a > i.ri-arrow-down-double-line');
-const aboutme = qs('.about');
-
-homeIcon.addEventListener('click', () => {
-    scrollToSection(aboutme);
-});
-
-const navLinksA = document.querySelectorAll('.nav-links a');
-
-navLinksA.forEach(link => {
-    link.addEventListener('click', (event) => {
-        event.preventDefault();
-        const targetId = link.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        scrollToSection(targetElement);
-    });
-});
-
 function scrollToSection(element) {
-    const headerHeight = document.querySelector('header').offsetHeight;
+    const headerHeight = qs('header').offsetHeight;
     const offset = 20;
 
     window.scrollTo({
@@ -252,18 +177,42 @@ function scrollToSection(element) {
     });
 }
 
-const toggleButton = document.querySelector('.menu-toggle');
-const navLinks = document.querySelector('.nav-links');
-const navItems = navLinks.querySelectorAll('a');
+document.addEventListener('DOMContentLoaded', () => {
+    const homeIcon = qs('a > i.ri-arrow-down-double-line');
+    const projects = qs('.projects');
+    const navLinks = qs('.nav-links');
+    const toggleButton = qs('.menu-toggle');
 
-function toggleMenu() {
-    navLinks.classList.toggle('nav-active');
-}
+    if (homeIcon && projects) {
+        homeIcon.addEventListener('click', () => {
+            scrollToSection(projects);
+        });
+    }
 
-toggleButton.addEventListener('click', toggleMenu);
+    const navLinksA = qs('.nav-links a', true);
 
-navItems.forEach(item => {
-    item.addEventListener('click', () => {
-        navLinks.classList.remove('nav-active');
+    navLinksA.forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                scrollToSection(targetElement);
+            }
+        });
     });
+
+    if (toggleButton && navLinks) {
+        toggleButton.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-active');
+        });
+    }
+
+    if (navLinks) {
+        navLinks.addEventListener('click', (event) => {
+            if (event.target.tagName === 'A') {
+                navLinks.classList.remove('nav-active');
+            }
+        });
+    }
 });
