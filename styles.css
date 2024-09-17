@@ -496,7 +496,7 @@ video {
     }
 
     footer {
-        padding: 33px 3%;
+        padding: 33px 4%;
     }
 
     footer p {
@@ -528,7 +528,7 @@ video {
 
     .footer-icons {
         display: flex;
-        gap: 20px;
+        gap: 24px;
     }
 
     .footer-icons a {
