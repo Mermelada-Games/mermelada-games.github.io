@@ -408,6 +408,12 @@ video {
     border-radius: 12px;
 }
 
+iframe {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
 .flex,
 .flex2 {
     display: flex;
