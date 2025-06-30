@@ -1,0 +1,8 @@
+---
+const { href, img, alt, label } = Astro.props;
+const isMail = href.startsWith('mailto:');
+---
+<a href={href} target={isMail ? undefined : '_blank'} rel={isMail ? undefined : 'noopener'} style="display: flex; align-items: center; color: var(--text-color); text-decoration: none; margin-right: 1rem;">
+  <img src={img} alt={alt} style="height: 32px; width: 32px; margin-right: 0.5rem;" />
+  {label}
+</a>
