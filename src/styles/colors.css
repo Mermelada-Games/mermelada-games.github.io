@@ -8,4 +8,7 @@
   --palette-7: #476B5E;
   --palette-8: #E0ECCC;
   --palette-9: #F3F8EC;
+
+  --text-color: var(--palette-2);
+  --background-color: var(--palette-9);
 }

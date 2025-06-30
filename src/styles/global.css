@@ -1,1 +1,7 @@
+@import './fonts.css';
+@import './colors.css';
 @import "tailwindcss";
+
+body {
+  font-family: var(--font-primary);
+}
