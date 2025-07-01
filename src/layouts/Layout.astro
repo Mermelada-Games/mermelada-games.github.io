@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Header from '../sections/Header.astro';
 import Footer from '../sections/Footer.astro';
+import { ClientRouter } from 'astro:transitions';
 ---
 
 <!doctype html>
@@ -12,6 +13,7 @@ import Footer from '../sections/Footer.astro';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro Basics</title>
+		<ClientRouter />
 	</head>
 	<body>
 		<div class="layout-wrapper">
