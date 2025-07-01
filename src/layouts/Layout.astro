@@ -14,9 +14,13 @@ import Footer from '../sections/Footer.astro';
 		<title>Astro Basics</title>
 	</head>
 	<body>
-		<Header />
-		<slot />
-		<Footer />
+		<div class="layout-wrapper">
+			<Header />
+			<main class="layout-main">
+				<slot />
+			</main>
+			<Footer />
+		</div>
 	</body>
 </html>
 
@@ -26,5 +30,14 @@ import Footer from '../sections/Footer.astro';
 		margin: 0;
 		width: 100%;
 		height: 100%;
+	}
+	.layout-wrapper {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+	}
+	.layout-main {
+		flex: 1 0 auto;
+		width: 100%;
 	}
 </style>

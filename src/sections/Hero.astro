@@ -1,0 +1,25 @@
+<section class="hero-video-section">
+    <video class="hero-video-bg" autoplay loop muted playsinline poster="/assets/MermeladaGames.svg">
+        <source src="/assets/video.mp4" type="video/mp4">
+    </video>
+</section>
+
+<style>
+.hero-video-section {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+}
+.hero-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+}
+</style>
