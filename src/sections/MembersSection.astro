@@ -1,0 +1,64 @@
+---
+import MemberCard from '../components/MemberCard.astro';
+const members = [
+  {
+    imgSrc: "/assets/carlos_gonzalez.webp",
+    name: "CARLOS GONZÁLEZ",
+    role: "Artist",
+    socials: [
+      { url: "", icon: "/assets/github.svg", },
+      { url: "", icon: "/assets/linkedin.svg", },
+      { url: "", icon: "/assets/web.svg", }
+    ]
+  },
+  {
+    imgSrc: "/assets/miguel_Iglesias.webp",
+    name: "MIGUEL IGLESIAS",
+    role: "Designer & Artist",
+    socials: [
+      { url: "", icon: "/assets/github.svg", },
+      { url: "", icon: "/assets/linkedin.svg", },
+      { url: "", icon: "/assets/web.svg", }
+    ]
+  },
+  {
+    imgSrc: "/assets/lluc_cid.webp",
+    name: "LLUC CID",
+    role: "Designer",
+    socials: [
+      { url: "", icon: "/assets/github.svg", },
+      { url: "", icon: "/assets/linkedin.svg", },
+      { url: "", icon: "/assets/web.svg", }
+    ]
+  },
+  {
+    imgSrc: "/assets/sergio_fernandez.webp",
+    name: "SERGIO FERNÁNDEZ",
+    role: "Programmer",
+    socials: [
+      { url: "", icon: "/assets/github.svg", },
+      { url: "", icon: "/assets/linkedin.svg", },
+      { url: "", icon: "/assets/web.svg", }
+    ]
+  },
+  {
+    imgSrc: "/assets/guillem_alqueza.webp",
+    name: "GUILLEM ALQUEZA",
+    role: "Programmer & Audio",
+    socials: [
+      { url: "", icon: "/assets/github.svg", },
+      { url: "", icon: "/assets/linkedin.svg", },
+      { url: "", icon: "/assets/web.svg", }
+    ]
+  }
+];
+---
+
+<section style="margin-top: 5rem;">
+  <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 2.5rem;">TEAM</h2>
+  <div style="display: flex; flex-wrap: wrap; gap: 2.5rem; justify-content: center;">
+    {members.map(member => (
+      <MemberCard {...member} />
+    ))}
+  </div>
+</section>
