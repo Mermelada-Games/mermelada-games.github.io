@@ -1,17 +1,20 @@
 ---
 import NavButton from '../components/NavButton.astro';
+import HamburgerMenu from '../components/HamburgerMenu.jsx';
 const navButtons = [
   { label: "HOME", href: "/" },
   { label: "GAMES", href: "/games" },
   { label: "ABOUT", href: "/about" },
 ];
 ---
-<header style="display: flex; align-items: center; justify-content: space-between; padding: 1rem 5rem; background: var(--background-color);">
-  <a href="/" style="display: flex; align-items: center;">
-    <img src="/assets/Logo.svg" alt="Logo" style="height: 48px; width: auto; cursor: pointer; margin-right: 0.7rem;" />
-    <img src="/assets/MermeladaGames.svg" alt="Logo" style="height: 48px; width: auto; cursor: pointer;" />
+<header class="header-responsive">
+  <a href="/" class="header-logo">
+    <span class="header-logo-row">
+      <img src="/assets/Logo.svg" alt="Logo" style="height: 48px; width: auto; cursor: pointer; margin-right: 0.7rem;" />
+      <img src="/assets/MermeladaGames.svg" alt="Logo" style="height: 48px; width: auto; cursor: pointer;" />
+    </span>
   </a>
-  <nav>
+  <nav class="desktop-nav">
     <ul style="display: flex; gap: 1rem; list-style: none; margin: 0; padding: 0;">
       {navButtons.map(btn => (
         <li>
@@ -20,5 +23,44 @@ const navButtons = [
       ))}
     </ul>
   </nav>
+  <div class="mobile-nav">
+    <HamburgerMenu navButtons={navButtons} client:only="react" />
+  </div>
 </header>
+<style>
+  .header-responsive {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 5rem;
+    background: var(--background-color);
+    position: relative;
+    z-index: 10;
+  }
+  .desktop-nav {
+    display: flex;
+  }
+  .mobile-nav {
+    display: none;
+  }
+  .header-logo-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  @media (max-width: 767px) {
+    .header-responsive {
+      padding: 1rem 1.2rem;
+    }
+    .desktop-nav {
+      display: none;
+    }
+    .mobile-nav {
+      display: block;
+    }
+    .header-logo img {
+      height: 40px !important;
+    }
+  }
+</style>
 </header>

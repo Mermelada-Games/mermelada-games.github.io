@@ -2,12 +2,14 @@
 import SocialIcon from '../components/SocialIcon.astro';
 ---
 
-<footer style="background: var(--background-color); border-top: 1px solid var(--primary-color); padding: 3rem 5rem; font-family: inherit;">
-  <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; width: 100%;">
-    <div style="display: flex; align-items: center; justify-content: flex-start; gap: 2rem; flex-wrap: wrap; width: 100%;">
-      <img src="/assets/Logo.svg" alt="Logo" style="height: 48px; width: auto;" />
-      <img src="/assets/MermeladaGames.svg" alt="Mermelada Games" style="height: 48px; width: auto;" />
-      <div style="flex: 1;"></div>
+<footer class="footer-responsive">
+  <div class="footer-content">
+    <div class="footer-row">
+      <div class="footer-logo-group">
+        <img src="/assets/Logo.svg" alt="Logo" class="footer-logo" />
+        <img src="/assets/MermeladaGames.svg" alt="Mermelada Games" class="footer-logo" />
+      </div>
+      <div class="footer-spacer"></div>
       <SocialIcon href="" img="/assets/itchio.svg" alt="Itchio" label="Itchio" />
       <SocialIcon href="" img="/assets/instagram.svg" alt="Instagram" label="Instagram" />
       <SocialIcon href="" img="/assets/linkedin.svg" alt="Linkedin" label="Linkedin" />
@@ -16,9 +18,96 @@ import SocialIcon from '../components/SocialIcon.astro';
       <SocialIcon href="" img="/assets/discord.svg" alt="Discord" label="Discord" />
       <SocialIcon href="" img="/assets/mail.svg" alt="Gmail" label="gamesmermelada@gmail.com" />
     </div>
-    <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%; margin-top: 3rem; gap: 1rem; box-sizing: border-box;">
-      <span style="color: var(--text-color); font-size: 1.2rem; text-align: left;">© {new Date().getFullYear()} Mermelada Games</span>
-      <span style="color: var(--text-color); font-size: 1rem; text-align: right;">Copyright Mermelada Games. All rights reserved. All company names, brand names, trademarks and logos are the property of their respective owners.</span>
+    <div class="footer-bottom">
+      <span class="footer-copyright">© {new Date().getFullYear()} Mermelada Games</span>
+      <span class="footer-legal">Copyright Mermelada Games. All rights reserved. All company names, brand names, trademarks and logos are the property of their respective owners.</span>
     </div>
   </div>
+  <style>
+    .footer-responsive {
+      background: var(--background-color);
+      border-top: 1px solid var(--primary-color);
+      padding: 3rem 5rem;
+      font-family: inherit;
+      width: 100%;
+    }
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      width: 100%;
+    }
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 2rem;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+    .footer-logo-group {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .footer-logo {
+      height: 48px;
+      width: auto;
+    }
+    .footer-spacer {
+      flex: 1;
+    }
+    .footer-bottom {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin-top: 3rem;
+      gap: 1rem;
+      box-sizing: border-box;
+    }
+    .footer-copyright {
+      color: var(--text-color);
+      font-size: 1.2rem;
+      text-align: left;
+    }
+    .footer-legal {
+      color: var(--text-color);
+      font-size: 1rem;
+      text-align: right;
+    }
+    @media (max-width: 767px) {
+      .footer-responsive {
+        padding: 2rem 1.2rem;
+      }
+      .footer-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.2rem;
+      }
+      .footer-logo-group {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0.3rem;
+      }
+      .footer-logo {
+        height: 40px;
+        margin: 0 auto;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.7rem;
+        margin-top: 2rem;
+      }
+      .footer-copyright, .footer-legal {
+        text-align: left;
+        font-size: 1rem;
+      }
+    }
+  </style>
 </footer>
