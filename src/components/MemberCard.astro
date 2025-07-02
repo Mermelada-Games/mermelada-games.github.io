@@ -30,7 +30,7 @@ const { imgSrc, name, role, socials = [], showSocialText = false } = Astro.props
   <div style="text-align: center;">
     <div style="font-size: 1.3rem; font-weight: bold; color: var(--palette-2); margin-bottom: 1.1rem;">{name}</div>
     <div style="font-size: 1.1rem; color: var(--palette-2); margin-bottom: 2.1rem;">{role}</div>
-    <div style="display: flex; justify-content: center;">
+    <div style="display: flex; justify-content: center; gap: 0.5rem;">
       {socials.map(({ url, icon, label }) => (
         <SocialIcon href={url} img={icon} alt={label} label={label} showText={showSocialText} />
       ))}
