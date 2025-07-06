@@ -1,0 +1,59 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div class="award-item">
+  <div class="award-image-container">
+    <img src="/assets/award.svg" alt={title} class="award-background" />
+    <div class="award-text-overlay">
+      <h3 class="award-title">{title}</h3>
+    </div>
+  </div>
+</div>
+
+<style>
+  .award-item {
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  .award-image-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+  
+  .award-background {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+  
+  .award-text-overlay {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 1rem;
+  }
+  
+  .award-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+</style>

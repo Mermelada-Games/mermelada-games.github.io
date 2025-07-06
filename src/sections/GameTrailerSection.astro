@@ -1,0 +1,54 @@
+---
+import YouTubePlayer from '../components/YouTubePlayer.astro';
+import GameButton from '../components/GameButton.astro';
+
+export interface Props {
+    videoId: string;
+    title?: string;
+    controls?: boolean;
+    modestbranding?: boolean;
+    buttonLink?: string;
+    buttonText?: string;
+}
+
+const { 
+    videoId, 
+    title = "Game Trailer", 
+    controls = true, 
+    modestbranding = true,
+    buttonLink = "",
+    buttonText = "PLAY THE GAME"
+} = Astro.props;
+---
+
+<section class="game-trailer-section">
+    <div class="container">
+        <YouTubePlayer 
+            videoId={videoId}
+            title={title}
+            controls={controls}
+            modestbranding={modestbranding}
+        />
+        <div class="game-button-container">
+            <GameButton link={buttonLink} text={buttonText} />
+        </div>
+    </div>
+</section>
+
+<style>
+    .game-trailer-section {
+        background-color: var(--background-color);
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+    
+    .game-button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+</style>

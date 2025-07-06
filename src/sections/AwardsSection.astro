@@ -1,0 +1,74 @@
+---
+import AwardItem from '../components/AwardItem.astro';
+
+interface Award {
+  title: string;
+}
+
+interface Props {
+  title?: string;
+  awards: Award[];
+}
+
+const { 
+  title = "AWARDS", 
+  awards 
+} = Astro.props;
+---
+
+<section class="awards-section">
+  <div class="container">
+    <h2 class="awards-title">{title}</h2>
+    
+    <div class="awards-grid">
+      {awards.map((award) => (
+        <AwardItem title={award.title} />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .awards-section {
+    padding: 4rem 0;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .awards-title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  
+  .awards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    .awards-section {
+      padding: 2rem 0;
+    }
+    
+    .awards-title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .awards-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      justify-items: center;
+    }
+  }
+</style>
