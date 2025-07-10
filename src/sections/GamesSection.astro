@@ -2,8 +2,8 @@
 import GameContainer from '../components/GameContainer.astro';
 ---
 
-<section style="display: flex; flex-direction: column; gap: 4rem; justify-content: center;">
-  <div style="display: flex; flex-direction: column; gap: 0; height: 200vh; justify-content: center;">
+<section class="games-section">
+  <div class="games-list">
     <GameContainer
       imgSrc="/assets/mots.webp"
       title="MOTS"
@@ -34,3 +34,18 @@ import GameContainer from '../components/GameContainer.astro';
     />
   </div>
 </section>
+<style>
+  .games-section {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    justify-content: center;
+  }
+  .games-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    height: 200vh;
+    justify-content: center;
+  }
+</style>

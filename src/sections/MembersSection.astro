@@ -54,11 +54,27 @@ const members = [
 ];
 ---
 
-<section style="margin-top: 5rem;">
-  <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 2.5rem;">TEAM</h2>
-  <div style="display: flex; flex-wrap: wrap; gap: 2.5rem; justify-content: center;">
+<section class="members-section">
+  <h2 class="members-title">TEAM</h2>
+  <div class="members-list">
     {members.map(member => (
       <MemberCard {...member} />
     ))}
   </div>
 </section>
+<style>
+  .members-section {
+    margin-top: 5rem;
+  }
+  .members-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .members-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    justify-content: center;
+  }
+</style>
