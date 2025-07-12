@@ -1,0 +1,24 @@
+---
+import GalleryCarousel from '../components/GalleryCarousel.jsx';
+
+const galleryImages = [
+  {
+    src: '/assets/aresatlas.webp',
+    alt: 'Ares Atlas - Game Screenshot'
+  },
+  {
+    src: '/assets/mindabyss.webp',
+    alt: 'Mind Abyss - Game Screenshot'
+  },
+  {
+    src: '/assets/mots.webp',
+    alt: 'MOTS - Game Screenshot'
+  },
+  {
+    src: '/assets/stelar.webp',
+    alt: 'Stelar - Game Screenshot'
+  }
+];
+---
+
+<GalleryCarousel images={galleryImages} client:load />
