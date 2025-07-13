@@ -3,6 +3,22 @@ import React, { useState } from 'react';
 const HamburgerMenu = ({ navButtons }) => {
   const [open, setOpen] = useState(false);
 
+  const handleNavClick = (href, e) => {
+    const currentPath = window.location.pathname;
+    
+    if (href === currentPath) {
+      e.preventDefault();
+      setOpen(false);
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      return;
+    }
+
+    setOpen(false);
+  };
+
   return (
     <div className="burger-menu-container">
       <button
@@ -18,7 +34,7 @@ const HamburgerMenu = ({ navButtons }) => {
         <ul>
           {navButtons.map((btn) => (
             <li key={btn.href}>
-              <a href={btn.href} onClick={() => setOpen(false)}>{btn.label}</a>
+              <a href={btn.href} onClick={(e) => handleNavClick(btn.href, e)}>{btn.label}</a>
             </li>
           ))}
         </ul>

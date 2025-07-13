@@ -8,7 +8,7 @@ const navButtons = [
 ];
 ---
 <header class="header-responsive">
-  <a href="/" class="header-logo">
+  <a href="/" class="header-logo" data-href="/">
     <span class="header-logo-row">
       <img src="/assets/Logo.svg" alt="Logo" style="height: 48px; width: auto; cursor: pointer; margin-right: 0.7rem;" />
       <img src="/assets/MermeladaGames.svg" alt="Logo" style="height: 48px; width: auto; cursor: pointer;" />
@@ -58,9 +58,33 @@ const navButtons = [
     }
   }
 
-  initHeaderScroll();
+  function handleLogoClick() {
+    const logoLink = document.querySelector('.header-logo');
+    
+    if (logoLink) {
+      logoLink.addEventListener('click', (e) => {
+        const href = logoLink.getAttribute('data-href');
+        const currentPath = window.location.pathname;
 
-  document.addEventListener('astro:page-load', initHeaderScroll);
+        if (href === currentPath) {
+          e.preventDefault();
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        }
+      });
+    }
+  }
+
+  function initHeader() {
+    initHeaderScroll();
+    handleLogoClick();
+  }
+
+  initHeader();
+
+  document.addEventListener('astro:page-load', initHeader);
 </script>
 
 <style>

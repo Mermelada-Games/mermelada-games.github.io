@@ -2,9 +2,34 @@
 const { href, label } = Astro.props;
 const isActive = Astro.url.pathname === href;
 ---
-<a href={href} class={`nav-button${isActive ? ' active' : ''}`}>
+<a href={href} class={`nav-button${isActive ? ' active' : ''}`} data-href={href}>
   {label}
 </a>
+
+<script>
+  function handleNavClick() {
+    const navButtons = document.querySelectorAll('.nav-button');
+    
+    navButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        const href = button.getAttribute('data-href');
+        const currentPath = window.location.pathname;
+        
+        if (href === currentPath) {
+          e.preventDefault();
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  }
+
+  handleNavClick();
+
+  document.addEventListener('astro:page-load', handleNavClick);
+</script>
 
 <style>
   .nav-button {
