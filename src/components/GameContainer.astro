@@ -10,6 +10,7 @@ export interface Props {
     textSize?: string;
     showButton?: boolean;
     imgHeight?: string;
+    showOverlay?: boolean;
 }
 
 const { 
@@ -20,15 +21,19 @@ const {
     imgAlt = "Game Image",
     textSize = "4rem",
     showButton = true,
-    imgHeight = "50vh"
+    imgHeight = "50vh",
+    showOverlay = true
 } = Astro.props;
+
+const transitionName = title.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 ---
 
 <div class="game-container">
   <img src={imgSrc} alt={imgAlt} class="game-img" style={`height: ${imgHeight}; max-height: ${imgHeight};`} />
+  {showOverlay && <div class="image-overlay"></div>}
   <div class="game-overlay">
-    <h2 class="game-title" style={`font-size: ${textSize}; margin-bottom: ${showButton ? '1.5rem' : '0'};`}>{title}</h2>
-    {showButton && <GameButton link={buttonLink} text={buttonText} />}
+    <h2 class="game-title" style={`font-size: ${textSize}; margin-bottom: ${showButton ? '1.5rem' : '0'};`} transition:name={`game-title-${transitionName}`}>{title}</h2>
+    {showButton && <div transition:name={`game-button-${transitionName}`}><GameButton link={buttonLink} text={buttonText} /></div>}
   </div>
 </div>
 <style>
@@ -42,6 +47,19 @@ const {
     width: 100%;
     object-fit: cover;
     display: block;
+  }
+  .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+    transition: background-color 0.5s ease-in-out;
+  }
+  .game-container:has(a:hover) .image-overlay {
+    background-color: rgba(0, 0, 0, 0);
   }
   .game-overlay {
     position: absolute;
@@ -60,8 +78,49 @@ const {
   }
   .game-title {
     text-shadow: 0 2px 8px rgba(0,0,0,0.7);
-    transition: margin-bottom 0.5s ease-in-out;
     text-align: center;
     width: 100%;
+  }
+
+  [style*="view-transition-name: game-title-"]::view-transition-old,
+  [style*="view-transition-name: game-title-"]::view-transition-new {
+    animation-duration: 0.4s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  [style*="view-transition-name: game-button-"]::view-transition-old,
+  [style*="view-transition-name: game-button-"]::view-transition-new {
+    animation-duration: 0.3s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  [style*="view-transition-name: game-button-"]::view-transition-old {
+    animation-name: fade-out-scale;
+  }
+
+  @keyframes fade-out-scale {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+  }
+
+  [style*="view-transition-name: game-title-"]::view-transition-new {
+    animation-name: slide-center;
+  }
+
+  @keyframes slide-center {
+    0% {
+      transform: translateY(-10px);
+      opacity: 0.9;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 </style>
