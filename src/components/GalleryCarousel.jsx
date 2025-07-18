@@ -59,7 +59,7 @@ const GalleryCarousel = ({ images, autoScrollSpeed = 2000 }) => {
 
         .gallery-carousel {
           display: flex;
-          gap: 0.5vw;
+          gap: 0;
           overflow-x: hidden;
           overflow-y: hidden;
           scroll-behavior: auto;
@@ -70,50 +70,41 @@ const GalleryCarousel = ({ images, autoScrollSpeed = 2000 }) => {
 
         .gallery-item {
           flex-shrink: 0;
-          width: calc(30% - 0.33vw);
+          width: auto;
           height: 100%;
           position: relative;
-          border-radius: 10px;
           overflow: hidden;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .gallery-item img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+          max-height: 100%;
+          width: auto;
+          height: auto;
+          object-fit: contain;
           display: block;
         }
 
         @media (max-width: 768px) {
           .gallery-carousel-container {
-            height: 20vw;
+            height: 40vw;
             width: 100%;
             max-width: 100vw;
           }
-          
-          .gallery-carousel {
-            gap: 0.5vw;
-          }
-          
           .gallery-item {
-            width: calc(30% - 0.33vw);
+            width: auto;
           }
         }
 
         @media (max-width: 480px) {
           .gallery-carousel-container {
-            height: 50vw;
             width: 100%;
             max-width: 100vw;
           }
-          
-          .gallery-carousel {
-            gap: 0.5vw;
-          }
-          
           .gallery-item {
-            width: calc(30% - 0.33vw);
+            width: auto;
           }
         }
       `}</style>
