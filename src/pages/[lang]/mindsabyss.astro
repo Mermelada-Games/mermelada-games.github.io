@@ -1,0 +1,78 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import AwardsSection from '../../sections/AwardsSection.astro';
+import GameInfoSection from '../../sections/GameInfoSection.astro';
+import GameTrailerSection from '../../sections/GameTrailerSection.astro';
+import GameContainer from '../../components/GameContainer.astro';
+import GalleryCarousel from '../../components/GalleryCarousel.jsx';
+import { getLangStaticPaths } from '../../utils/i18n.js';
+
+export async function getStaticPaths() {
+  return getLangStaticPaths();
+}
+
+const galleryImages = [
+  {
+    src: '/assets/aresatlas.webp',
+    alt: 'Ares Atlas - Game Screenshot'
+  },
+  {
+    src: '/assets/mindabyss.webp',
+    alt: 'Mind Abyss - Game Screenshot'
+  },
+  {
+    src: '/assets/mots.webp',
+    alt: 'MOTS - Game Screenshot'
+  },
+  {
+    src: '/assets/stelar.webp',
+    alt: 'Stelar - Game Screenshot'
+  }
+];
+---
+
+<Layout>
+    <main class="game-page">
+
+        <GameContainer 
+            imgSrc="/assets/mindabyss.webp"
+            title="MIND'S ABYSS"
+            showButton={false}
+            showOverlay={false}
+        />
+
+        <GameTrailerSection 
+            videoId="-oyWQNy16fI"
+            title="Game Trailer"
+            controls={true}
+            modestbranding={true}
+            buttonLink=""
+        />
+
+        <GameInfoSection 
+            title="About the Game"
+            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            bigTitle="GAME TITLE"
+        />
+
+        <GalleryCarousel images={galleryImages} client:load />
+
+        <AwardsSection awards={[
+            {
+                title: "Maximum Fun Award - LUDI awards 2024",
+            },
+            {
+                title: "Selected for further development - LUDI awards 2024",
+            }
+        ]} />
+
+    </main>
+</Layout>
+
+<style>
+    .game-page {
+        min-height: 100vh;
+        padding: 0;
+        background-color: var(--background-color);
+    }
+</style>
