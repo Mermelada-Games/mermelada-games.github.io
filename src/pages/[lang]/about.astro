@@ -1,0 +1,34 @@
+---
+
+import Layout from '../../layouts/Layout.astro';
+import AboutSection from '../../sections/AboutSection.astro';
+import MembersSection from '../../sections/MembersSection.astro';
+import GallerySection from '../../sections/GallerySection.astro';
+import { getLangStaticPaths, t } from '../../utils/i18n.js';
+
+export async function getStaticPaths() {
+  return getLangStaticPaths();
+}
+---
+
+<Layout>
+  <div style="display: flex; flex-direction: column; gap: 5rem; margin-bottom: 5rem;">
+    <AboutSection
+      imgSrc="/assets/MascotaMermeladaGames.webp"
+      title={t('about-title', Astro.params.lang)}
+      text={t('about-text', Astro.params.lang)}
+      imgPosition="left"
+    />
+    
+    <GallerySection />
+    
+    <AboutSection
+      imgSrc="/assets/Logo.svg"
+      title={t('mission-title', Astro.params.lang)}
+      text={t('mission-text', Astro.params.lang)}
+      imgPosition="right"
+    />
+
+    <MembersSection />
+  </div>
+</Layout>

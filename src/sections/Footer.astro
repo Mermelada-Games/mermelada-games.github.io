@@ -1,5 +1,7 @@
 ---
 import SocialIcon from '../components/SocialIcon.astro';
+import { t, getLocaleFromPath } from '../utils/i18n.js';
+const lang = getLocaleFromPath(Astro.url.pathname);
 ---
 
 <footer class="footer-responsive">
@@ -20,7 +22,7 @@ import SocialIcon from '../components/SocialIcon.astro';
     </div>
     <div class="footer-bottom">
       <span class="footer-copyright">© {new Date().getFullYear()} Mermelada Games</span>
-      <span class="footer-legal">Copyright Mermelada Games. All rights reserved. All company names, brand names, trademarks and logos are the property of their respective owners.</span>
+      <span class="footer-legal">{t('footer-legal', lang)}</span>
     </div>
   </div>
   <style>

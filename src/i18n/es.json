@@ -1,0 +1,18 @@
+{
+  "home": "INICIO",
+  "about": "SOBRE NOSOTROS",
+  "games": "JUEGOS",
+  "footer-legal": "Copyright Mermelada Games. Todos los derechos reservados. Todos los nombres de empresa, marcas registradas y logotipos son propiedad de sus respectivos dueños.",
+  "about-title": "Sobre Nosotros",
+  "about-text": "Somos cinco desarrolladores de videojuegos de Barcelona a quienes nos encanta hacer juegos únicos pero sobre todo divertidos. Se trata de pasión, amistad, creatividad y mucho caos. Siempre untando diversión.",
+  "mission-title": "Misión",
+  "mission-text": "Nuestro objetivo es untar diversión en cada rincón con creatividad y juegos accesibles  para todo el mundo.",
+  "role-artist": "Artista",
+  "role-designer": "Diseñador",
+  "role-designer-artist": "Diseñador y Artista",
+  "role-programmer": "Programador",
+  "role-programmer-audio": "Programador y Audio",
+  "team": "EQUIPO",
+  "view-game": "VER EL JUEGO",
+  "play-game": "JUGAR AL JUEGO"
+}

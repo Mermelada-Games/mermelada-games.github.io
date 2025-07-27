@@ -1,5 +1,7 @@
 ---
+const lang = Astro.params?.lang;
 import GameContainer from '../components/GameContainer.astro';
+import { t } from '../utils/i18n.js';
 ---
 
 <section class="games-section">
@@ -7,29 +9,29 @@ import GameContainer from '../components/GameContainer.astro';
     <GameContainer
       imgSrc="/assets/mots.webp"
       title="MOTS"
-      buttonText="VIEW THE GAME"
-      buttonLink="/game"
+      buttonText={t('view-game', lang)}
+      buttonLink={`/${lang}/game`}
       imgAlt="Mots"
     />
     <GameContainer
       imgSrc="/assets/aresatlas.webp"
       title="ARES ATLAS"
-      buttonText="VIEW THE GAME"
-      buttonLink="/game"
+      buttonText={t('view-game', lang)}
+      buttonLink={`/${lang}/game`}
       imgAlt="Ares Atlas"
     />
     <GameContainer
       imgSrc="/assets/mindabyss.webp"
       title="MIND'S ABYSS"
-      buttonText="VIEW THE GAME"
-      buttonLink="/game"
+      buttonText={t('view-game', lang)}
+      buttonLink={`/${lang}/game`}
       imgAlt="Mind's Abyss"
     />
     <GameContainer
       imgSrc="/assets/stelar.webp"
       title="STELAR"
-      buttonText="VIEW THE GAME"
-      buttonLink="/game"
+      buttonText={t('view-game', lang)}
+      buttonLink={`/${lang}/game`}
       imgAlt="Stelar"
     />
 </div>

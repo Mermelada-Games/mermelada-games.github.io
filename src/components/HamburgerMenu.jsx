@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import LanguageSwitcher from './LanguageSwitcher.jsx';
 
-const HamburgerMenu = ({ navButtons }) => {
+const HamburgerMenu = ({ navButtons, lang }) => {
   const [open, setOpen] = useState(false);
 
   const handleNavClick = (href, e) => {
@@ -38,6 +39,9 @@ const HamburgerMenu = ({ navButtons }) => {
             </li>
           ))}
         </ul>
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
+          <LanguageSwitcher lang={lang} />
+        </div>
       </nav>
       <style>{`
         .burger-menu-container {

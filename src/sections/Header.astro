@@ -1,10 +1,13 @@
 ---
 import NavButton from '../components/NavButton.astro';
 import HamburgerMenu from '../components/HamburgerMenu.jsx';
+import { t } from '../utils/i18n.js';
+import LanguageSwitcher from '../components/LanguageSwitcher.jsx';
+const lang = Astro.params?.lang;
 const navButtons = [
-  { label: "HOME", href: "/" },
-  { label: "GAMES", href: "/games" },
-  { label: "ABOUT", href: "/about" },
+  { label: t('home', lang), href: `/${lang}/` },
+  { label: t('games', lang), href: `/${lang}/games` },
+  { label: t('about', lang), href: `/${lang}/about` },
 ];
 ---
 <header class="header-responsive">
@@ -14,7 +17,7 @@ const navButtons = [
       <img src="/assets/MermeladaGames.svg" alt="Logo" style="height: 48px; width: auto; cursor: pointer;" />
     </span>
   </a>
-  <nav class="desktop-nav">
+  <nav class="desktop-nav" style="gap: 1rem;">
     <ul style="display: flex; gap: 1rem; list-style: none; margin: 0; padding: 0;">
       {navButtons.map(btn => (
         <li>
@@ -22,9 +25,10 @@ const navButtons = [
         </li>
       ))}
     </ul>
+    <LanguageSwitcher lang={lang} client:only="react" />
   </nav>
   <div class="mobile-nav">
-    <HamburgerMenu navButtons={navButtons} client:only="react" />
+    <HamburgerMenu navButtons={navButtons} lang={lang} client:only="react" />
   </div>
 </header>
 

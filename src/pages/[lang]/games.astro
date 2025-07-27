@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import GamesSection from '../../sections/GamesSection.astro';
+import { getLangStaticPaths } from '../../utils/i18n.js';
+
+export async function getStaticPaths() {
+  return getLangStaticPaths();
+}
+---
+
+<Layout>
+  <div style="display: flex; flex-direction: column; gap: 5rem; margin-bottom: 5rem;">
+    <GamesSection />
+  </div>
+</Layout>

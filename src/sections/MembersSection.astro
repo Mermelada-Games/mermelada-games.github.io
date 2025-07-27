@@ -1,10 +1,12 @@
 ---
 import MemberCard from '../components/MemberCard.astro';
+import { t } from '../utils/i18n.js';
+const lang = Astro.params?.lang;
 const members = [
   {
     imgSrc: "/assets/carlos_gonzalez.webp",
     name: "CARLOS GONZÁLEZ",
-    role: "Artist",
+    role: t('role-artist', lang),
     socials: [
       { url: "https://github.com/gosu00", icon: "/assets/github.svg", },
       { url: "https://www.linkedin.com/in/carlos-gonz%C3%A1lez-subir%C3%B3n-45ab7722a/", icon: "/assets/linkedin.svg", },
@@ -14,7 +16,7 @@ const members = [
   {
     imgSrc: "/assets/miguel_Iglesias.webp",
     name: "MIGUEL IGLESIAS",
-    role: "Designer & Artist",
+    role: t('role-designer-artist', lang),
     socials: [
       { url: "https://github.com/MiguelIglesiasAbarca", icon: "/assets/github.svg", },
       { url: "https://www.linkedin.com/in/miguel-iglesias-abarca/", icon: "/assets/linkedin.svg", },
@@ -24,7 +26,7 @@ const members = [
   {
     imgSrc: "/assets/lluc_cid.webp",
     name: "LLUC CID",
-    role: "Designer",
+    role: t('role-designer', lang),
     socials: [
       { url: "https://github.com/Lluccib", icon: "/assets/github.svg", },
       { url: "https://www.linkedin.com/in/lluc-cid-i-bernal-193843251/", icon: "/assets/linkedin.svg", },
@@ -34,7 +36,7 @@ const members = [
   {
     imgSrc: "/assets/sergio_fernandez.webp",
     name: "SERGIO FERNÁNDEZ",
-    role: "Programmer",
+    role: t('role-programmer', lang),
     socials: [
       { url: "https://github.com/Serfercont", icon: "/assets/github.svg", },
       { url: "https://www.linkedin.com/in/sergio-fernandez-contreras-5a57a0233/", icon: "/assets/linkedin.svg", },
@@ -44,7 +46,7 @@ const members = [
   {
     imgSrc: "/assets/guillem_alqueza.webp",
     name: "GUILLEM ALQUEZA",
-    role: "Programmer & Audio",
+    role: t('role-programmer-audio', lang),
     socials: [
       { url: "https://github.com/guillemalqueza", icon: "/assets/github.svg", },
       { url: "https://www.linkedin.com/in/guillemalqueza/", icon: "/assets/linkedin.svg", },
@@ -55,7 +57,7 @@ const members = [
 ---
 
 <section class="members-section">
-  <h2 class="members-title">TEAM</h2>
+  <h2 class="members-title">{t('team', lang)}</h2>
   <div class="members-list">
     {members.map(member => (
       <MemberCard {...member} />

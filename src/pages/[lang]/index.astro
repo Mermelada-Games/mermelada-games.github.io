@@ -1,0 +1,13 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../sections/Hero.astro';
+import { getLangStaticPaths } from '../../utils/i18n.js';
+
+export async function getStaticPaths() {
+  return getLangStaticPaths();
+}
+---
+
+<Layout>
+  <Hero />
+</Layout>

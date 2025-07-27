@@ -1,6 +1,7 @@
 ---
 import YouTubePlayer from '../components/YouTubePlayer.astro';
 import GameButton from '../components/GameButton.jsx';
+import { t } from '../utils/i18n.js';
 
 export interface Props {
     videoId: string;
@@ -11,13 +12,14 @@ export interface Props {
     buttonText?: string;
 }
 
+const lang = Astro.params?.lang;
 const { 
     videoId, 
     title = "Game Trailer", 
     controls = true, 
     modestbranding = true,
     buttonLink = "",
-    buttonText = "PLAY THE GAME"
+    buttonText = t('play-game', lang)
 } = Astro.props;
 ---
 
