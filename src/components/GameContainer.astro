@@ -1,5 +1,5 @@
 ---
-import GameButton from './GameButton.astro';
+import GameButton from './GameButton.jsx';
 
 export interface Props {
     imgSrc: string;
@@ -33,7 +33,7 @@ const transitionName = title.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-
   {showOverlay && <div class="image-overlay"></div>}
   <div class="game-overlay">
     <h2 class="game-title" style={`font-size: ${textSize}; margin-bottom: ${showButton ? '1.5rem' : '0'};`} transition:name={`game-title-${transitionName}`}>{title}</h2>
-    {showButton && <div transition:name={`game-button-${transitionName}`}><GameButton link={buttonLink} text={buttonText} /></div>}
+    {showButton && <div transition:name={`game-button-${transitionName}`}><GameButton client:only="react" link={buttonLink} text={buttonText} /></div>}
   </div>
 </div>
 <style>

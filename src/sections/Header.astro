@@ -29,8 +29,24 @@ const navButtons = [
 </header>
 
 <script>
+  declare global {
+    interface Window {
+      forceShowHeader?: () => void;
+    }
+  }
   let headerScrollListener: (() => void) | null = null;
+  Object.defineProperty(window, 'headerScrollListener', {
+    get() { return headerScrollListener; },
+    set(v) { headerScrollListener = v; }
+  });
   
+  window.forceShowHeader = function() {
+    const header = document.querySelector('.header-responsive');
+    if (header) {
+      header.classList.remove('header-hidden');
+    }
+  }
+
   function initHeaderScroll() {
     let lastScrollTop = 0;
     const header = document.querySelector('.header-responsive');
