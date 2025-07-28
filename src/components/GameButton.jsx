@@ -55,6 +55,8 @@ export default function GameButton({ link, text }) {
       window.location.href = link;
     }
   };
+  
+  const isExternal = link && !link.startsWith("/");
 
   return (
     <a
@@ -62,6 +64,7 @@ export default function GameButton({ link, text }) {
       href={link}
       onClick={handleClick}
       className="inline-block px-6 py-2 bg-[var(--palette-2)] text-white rounded-xl text-base font-bold no-underline shadow-md transition-all duration-200 ease-in-out hover:bg-[var(--palette-3)] hover:scale-105 active:scale-95"
+      {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
     >
       {text}
     </a>

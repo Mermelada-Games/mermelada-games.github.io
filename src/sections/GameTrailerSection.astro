@@ -10,6 +10,7 @@ export interface Props {
     modestbranding?: boolean;
     buttonLink?: string;
     buttonText?: string;
+    showButton?: boolean; 
 }
 
 const lang = Astro.params?.lang;
@@ -19,7 +20,8 @@ const {
     controls = true, 
     modestbranding = true,
     buttonLink = "",
-    buttonText = t('play-game', lang)
+    buttonText = t('play-game', lang),
+    showButton = true
 } = Astro.props;
 ---
 
@@ -31,9 +33,11 @@ const {
             controls={controls}
             modestbranding={modestbranding}
         />
-        <div class="game-button-container">
-            <GameButton link={buttonLink} text={buttonText} />
-        </div>
+        {showButton && (
+            <div class="game-button-container">
+                <GameButton link={buttonLink} text={buttonText} />
+            </div>
+        )}
     </div>
 </section>
 
