@@ -5,11 +5,13 @@ import GameInfoSection from '../../sections/GameInfoSection.astro';
 import GameTrailerSection from '../../sections/GameTrailerSection.astro';
 import GameContainer from '../../components/GameContainer.astro';
 import GalleryCarousel from '../../components/GalleryCarousel.jsx';
-import { getLangStaticPaths } from '../../utils/i18n.js';
+import { getLangStaticPaths, t } from '../../utils/i18n.js';
 
 export async function getStaticPaths() {
   return getLangStaticPaths();
 }
+
+const { lang } = Astro.params;
 
 const galleryImages = [
   {
@@ -63,10 +65,10 @@ const galleryImages = [
 
         <AwardsSection awards={[
             {
-                title: "Maximum Fun Award - LUDI awards 2024",
+                title: t('stelar-terrassa', lang)
             },
             {
-                title: "Selected for further development - LUDI awards 2024",
+                title: t('stelar-diversifiers', lang)
             }
         ]} />
 
