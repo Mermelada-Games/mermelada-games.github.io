@@ -2,10 +2,10 @@
 interface Props {
   title: string;
   text: string;
-  bigTitle: string;
+  imageSrc?: string;
 }
 
-const { title, text, bigTitle } = Astro.props;
+const { title, text, imageSrc } = Astro.props;
 ---
 
 <section class="game-info-section">
@@ -16,7 +16,7 @@ const { title, text, bigTitle } = Astro.props;
         <p class="section-text">{text}</p>
       </div>
       <div class="right-content">
-        <h1 class="big-title">{bigTitle}</h1>
+        <img src={imageSrc} alt="Game title image" style="max-width: 80%; height: auto;" />
       </div>
     </div>
   </div>
