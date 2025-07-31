@@ -6,8 +6,9 @@ const isMail = href.startsWith('mailto:');
   href={href}
   target={isMail ? undefined : '_blank'}
   rel={isMail ? undefined : 'noopener'}
+  aria-label={label || alt}
   class="flex items-center gap-2 text-[var(--text-color)] no-underline transition-transform duration-150 hover:scale-110 active:scale-95"
 >
-  <img src={img} alt={alt} class="h-8 w-8" />
-  {label}
+  <img src={img} alt={alt} class="h-8 w-8" loading="lazy" />
+  {label && <span>{label}</span>}
 </a>

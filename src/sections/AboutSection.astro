@@ -1,6 +1,7 @@
 ---
 const { imgSrc, title, text, imgPosition = "left" } = Astro.props;
 const sectionClass = imgPosition === 'right' ? 'about-section about-section--reverse' : 'about-section';
+import { Image } from "astro:assets"; 
 ---
 
 <section class={sectionClass}>
