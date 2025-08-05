@@ -1,11 +1,12 @@
 ---
-const { imgSrc, title, text, imgPosition = "left" } = Astro.props;
+const { imgSrc, title, text, imgPosition = "left", imgSize } = Astro.props;
 const sectionClass = imgPosition === 'right' ? 'about-section about-section--reverse' : 'about-section';
+const imgClass = imgSize === "large" ? "about-img about-img--large" : "about-img";
 import { Image } from "astro:assets"; 
 ---
 
 <section class={sectionClass}>
-  <img src={imgSrc} alt={title} class="about-img" />
+  <img src={imgSrc} alt={title} class={imgClass} />
   <div class="about-content">
     <h2 class="about-title">{title}</h2>
     <p class="about-text">{text}</p>
@@ -31,6 +32,10 @@ import { Image } from "astro:assets";
     height: auto;
     border-radius: 1rem;
   }
+  .about-img--large {
+    width: 600px;
+    max-width: 100%;
+  }
   .about-content {
     max-width: 700px;
     text-align: left;
@@ -50,7 +55,8 @@ import { Image } from "astro:assets";
       gap: 1.5rem !important;
       align-items: stretch !important;
     }
-    .about-img {
+    .about-img,
+    .about-img--large {
       width: 100% !important;
       max-width: 350px;
       margin: 0 auto;

@@ -12,9 +12,9 @@ export async function getStaticPaths() {
 ---
 
 <Layout>
-  <div style="display: flex; flex-direction: column; gap: 5rem; margin-bottom: 5rem;">
+  <div class="about-page-sections">
     <AboutSection
-      imgSrc="/assets/MascotaMermeladaGames.webp"
+      imgSrc="/assets/mermeSvg2.svg"
       title={t('about-title', Astro.params.lang)}
       text={t('about-text', Astro.params.lang)}
       imgPosition="left"
@@ -23,12 +23,29 @@ export async function getStaticPaths() {
     <GallerySection />
     
     <AboutSection
-      imgSrc="/assets/Logo.svg"
+      imgSrc="/assets/about1.webp"
       title={t('mission-title', Astro.params.lang)}
       text={t('mission-text', Astro.params.lang)}
       imgPosition="right"
+      imgSize="large"
     />
 
     <MembersSection />
   </div>
 </Layout>
+
+
+<style>
+  .about-page-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+  @media (max-width: 767px) {
+    .about-page-sections {
+      gap: 2.5rem !important;
+      margin-bottom: 2.5rem !important;
+    }
+  }
+</style>
