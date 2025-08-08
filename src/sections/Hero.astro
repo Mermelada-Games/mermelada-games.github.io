@@ -2,6 +2,10 @@
     <video class="hero-video-bg" autoplay loop muted playsinline poster="/assets/MermeladaGames.svg">
         <source src="/assets/video.mp4" type="video/mp4">
     </video>
+  <div class="hero-logos">
+    <img src="/assets/mermeSvg2.svg" class="hero-logo-left" />
+    <img src="/assets/MermeladaGames.svg" class="hero-logo-right" />
+  </div>
 </section>
 
 <style>
@@ -25,11 +29,44 @@
   z-index: -1;
 }
 
+.hero-logos {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 2rem;
+  margin-top: 0;
+}
+
+.hero-logo-left {
+  width: 250px;
+  height: auto;
+}
+
+.hero-logo-right {
+  width: 500px;
+  height: auto;
+  margin-left: 1.5rem;
+}
+
 @media (max-width: 767px) {
-  
   .hero-video-bg {
     object-fit: contain;
     object-position:center;
+  }
+  .hero-logo-left {
+    width: 22vw;
+    max-width: 90px;
+  }
+  .hero-logo-right {
+    width: 55vw;
+    max-width: 260px;
   }
 }
 </style>
