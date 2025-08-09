@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import AboutSection from '../../sections/AboutSection.astro';
 import FollowUs from '../../sections/FollowUs.astro';
+import OurGamesSection from '../../sections/OurGamesSection.astro';
 import Hero from '../../sections/Hero.astro';
 import { getLangStaticPaths, t } from '../../utils/i18n.js';
 
@@ -22,5 +23,6 @@ export async function getStaticPaths() {
     buttonLabel={t('about', Astro.params.lang)},
     buttonHref={`/${Astro.params.lang}/about`}
   />
+  <OurGamesSection lang={Astro.params.lang} />
   <FollowUs />
 </Layout>

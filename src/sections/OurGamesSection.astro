@@ -1,0 +1,147 @@
+---
+const { lang } = Astro.props;
+const games = [
+  {
+    title: "MOTS",
+    img: "/assets/mots.webp",
+    link: `/${lang}/mots`,
+    alt: "Mots"
+  },
+  {
+    title: "ARES ATLAS",
+    img: "/assets/aresatlas.webp",
+    link: `/${lang}/aresatlas`,
+    alt: "Ares Atlas"
+  },
+  {
+    title: "MIND'S ABYSS",
+    img: "/assets/mindabyss.webp",
+    link: `/${lang}/mindsabyss`,
+    alt: "Mind's Abyss"
+  },
+  {
+    title: "STELAR",
+    img: "/assets/stelar.webp",
+    link: `/${lang}/stelar`,
+    alt: "Stelar"
+  }
+];
+---
+
+<section class="our-games-section">
+  <h2 class="our-games-title">Our Games</h2>
+  <div class="our-games-list">
+    {games.map(game => (
+      <a href={game.link} class="our-game-card">
+        <div class="our-game-img-wrapper">
+          <img src={game.img} alt={game.alt} class="our-game-img" />
+          <div class="our-game-title-overlay"><span>{game.title}</span></div>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  .our-games-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+  .our-games-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin: 2.5rem 0 2.5rem 0;
+    font-weight: bold;
+    width: 100%;
+  }
+  .our-games-list {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    justify-content: center;
+    width: 100vw;
+    max-width: 100vw;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  .our-game-card {
+    text-decoration: none;
+    width: 25vw;
+    min-width: 200px;
+    max-width: 1fr;
+    position: relative;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: none;
+    transition: none;
+    cursor: pointer;
+    margin: 0;
+  }
+  .our-game-card:hover {
+    z-index: 1;
+  }
+  .our-game-img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 70%;
+    background: #222;
+  }
+  .our-game-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    left: 0;
+    top: 0;
+  }
+  .our-game-title-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 2rem 0.5rem;
+    color: var( --background-color);
+    font-size: 1.5rem;
+    text-align: center;
+    letter-spacing: 1px;
+    transition: transform 0.3s;
+  }
+  .our-game-card:hover .our-game-title-overlay {
+    transform: scale(1.2);
+  }
+  @media (max-width: 600px) {
+    .our-games-title {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+    }
+    .our-games-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 0;
+      width: 100vw;
+      align-items: stretch;
+    }
+    .our-game-card {
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+    }
+    .our-game-title-overlay {
+      font-size: 1rem;
+    }
+    .our-game-img-wrapper {
+      padding-bottom: 70%;
+    }
+  }
+</style>
