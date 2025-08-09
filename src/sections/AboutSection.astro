@@ -1,5 +1,6 @@
 ---
-const { imgSrc, title, text, imgPosition = "left", imgSize } = Astro.props;
+import AboutButton from "../components/AboutButton.astro";
+const { imgSrc, title, text, imgPosition = "left", imgSize, showButton = false, buttonLabel, buttonHref} = Astro.props;
 const sectionClass = imgPosition === 'right' ? 'about-section about-section--reverse' : 'about-section';
 const imgClass = imgSize === "large" ? "about-img about-img--large" : "about-img";
 import { Image } from "astro:assets"; 
@@ -10,6 +11,9 @@ import { Image } from "astro:assets";
   <div class="about-content">
     <h2 class="about-title">{title}</h2>
     <p class="about-text">{text}</p>
+    {showButton && (
+      <AboutButton href={buttonHref} label={buttonLabel} />
+    )}
   </div>
 </section>
 <style>

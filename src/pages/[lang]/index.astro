@@ -1,7 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import AboutSection from '../../sections/AboutSection.astro';
 import Hero from '../../sections/Hero.astro';
-import { getLangStaticPaths } from '../../utils/i18n.js';
+import { getLangStaticPaths, t } from '../../utils/i18n.js';
 
 export async function getStaticPaths() {
   return getLangStaticPaths();
@@ -10,4 +11,14 @@ export async function getStaticPaths() {
 
 <Layout>
   <Hero />
+  <AboutSection
+    imgSrc="/assets/mermeSvg1.svg"
+    title={t('mission-title', Astro.params.lang)}
+    text={t('mission-text', Astro.params.lang)}
+    imgPosition="left"
+    imgSize="large",
+    showButton={true},
+    buttonLabel={t('about', Astro.params.lang)},
+    buttonHref={`/${Astro.params.lang}/about`}
+  />
 </Layout>
