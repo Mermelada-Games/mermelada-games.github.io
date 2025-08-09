@@ -1,0 +1,66 @@
+---
+const socialLinks = [
+  { href: "https://mermelada-games.itch.io/", icon: "/assets/itchio.svg", alt: "Itchio" },
+  { href: "https://www.instagram.com/mermelada.games/", icon: "/assets/instagram.svg", alt: "Instagram" },
+  { href: "https://www.linkedin.com/company/mermeladagames", icon: "/assets/linkedin.svg", alt: "Linkedin" },
+  { href: "https://x.com/gamesmermelada", icon: "/assets/x.svg", alt: "X" },
+  { href: "https://www.youtube.com/@MermeladaGames", icon: "/assets/youtube.svg", alt: "Youtube" },
+];
+---
+
+<section class="follow-us-section">
+  <h2 class="follow-us-title">Follow Us</h2>
+  <div class="social-icons">
+    {socialLinks.map(link => (
+      <a href={link.href} target="_blank" rel="noopener noreferrer" class="social-icon-link">
+        <img src={link.icon} alt={link.alt} class="social-icon" />
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  .follow-us-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5rem 0 10rem 0;
+  }
+  .follow-us-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .social-icons {
+    display: flex;
+    margin-top: 3rem;
+    gap: 5rem;
+    justify-content: center;
+  }
+  .social-icon-link {
+    display: inline-block;
+    transition: transform 0.2s;
+  }
+  .social-icon-link:hover {
+    transform: scale(1.1);
+  }
+  .social-icon {
+    width: 64px;
+    height: 64px;
+    display: block;
+  }
+
+  @media (max-width: 767px) {
+    .social-icons {
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .social-icon {
+      width: 40px;
+      height: 40px;
+    }
+    .follow-us-title {
+      font-size: 1.3rem;
+    }
+  }
+</style>
