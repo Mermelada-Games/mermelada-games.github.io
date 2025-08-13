@@ -1,0 +1,149 @@
+---
+import AboutButton from "../components/AboutButton.astro";
+const { games, title } = Astro.props;
+type GameRow = {
+  leftImgs?: string[];
+  rightImgs?: string[];
+  leftImg?: string;
+  rightImg?: string;
+  buttonLabel: string;
+  buttonHref: string;
+  buttonNewTab?: boolean;
+};
+---
+
+<section class="latest-games">
+  {title && <h2 class="latest-games-title">{title}</h2>}
+  {games.map((row: GameRow, i: number) => {
+    const isInverted = !!row.leftImg && !!row.rightImgs;
+    return (
+      <div class="latest-games-row" style={`flex-direction: ${isInverted ? 'row-reverse' : 'row'};`}>
+        <div class="latest-games-images">
+          {!isInverted && row.leftImgs && row.leftImgs.map(src => (
+            <img src={src} class="latest-game-img" />
+          ))}
+          {isInverted && row.rightImgs && row.rightImgs.map(src => (
+            <img src={src} class="latest-game-img" />
+          ))}
+        </div>
+        <div class="latest-games-main">
+          {!isInverted && row.rightImg && (
+            <>
+              <img src={row.rightImg} class="latest-game-img main-img" />
+              <AboutButton href={row.buttonHref} label={row.buttonLabel} newTab={row.buttonNewTab} />
+            </>
+          )}
+          {isInverted && row.leftImg && (
+            <>
+              <img src={row.leftImg} class="latest-game-img main-img" />
+              <AboutButton href={row.buttonHref} label={row.buttonLabel} newTab={row.buttonNewTab} />
+            </>
+          )}
+        </div>
+      </div>
+    );
+  })}
+</section>
+
+<style>
+.latest-games {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.latest-games-title {
+  width: 100%;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+.latest-games-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.latest-games-images {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  flex-wrap: wrap;
+}
+.latest-games-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  max-width: 100%;
+}
+.latest-game-img {
+  width: 400px;
+  max-width: 90vw;
+  height: auto;
+  border-radius: 1rem;
+  box-sizing: border-box;
+}
+.main-img {
+  width: 350px;
+  max-width: 95vw;
+  box-sizing: border-box;
+}
+.latest-games-btn {
+  margin-top: 1rem;
+  padding: 0.75rem 2rem;
+  background: var(--accent);
+  color: white;
+  border-radius: 2rem;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: background 0.2s;
+}
+.latest-games-btn:hover {
+  background: var(--accent-dark);
+}
+
+@media (max-width: 767px) {
+  .latest-games-row {
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    align-items: center !important;
+    max-width: 100vw;
+    padding: 0 1rem;
+  }
+  .latest-games-images {
+    flex-direction: row !important;
+    gap: 0.5rem !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100%;
+    max-width: 100vw;
+    flex-wrap: wrap;
+  }
+  .latest-games-main {
+    align-items: center !important;
+    width: 100%;
+    max-width: 100vw;
+  }
+  .latest-game-img,
+  .main-img {
+    width: 90vw !important;
+    max-width: 320px !important;
+    margin: 0 auto !important;
+    display: block !important;
+    box-sizing: border-box;
+  }
+}
+</style>

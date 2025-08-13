@@ -1,18 +1,25 @@
 ---
 import AboutButton from "../components/AboutButton.astro";
-const { imgSrc, title, text, imgPosition = "left", imgSize, showButton = false, buttonLabel, buttonHref} = Astro.props;
+const { imgSrc, imgSrcs, title, text, imgPosition = "left", imgSize, showButton = false, buttonLabel, buttonHref, buttonNewTab } = Astro.props;
 const sectionClass = imgPosition === 'right' ? 'about-section about-section--reverse' : 'about-section';
 const imgClass = imgSize === "large" ? "about-img about-img--large" : "about-img";
 import { Image } from "astro:assets"; 
 ---
-
 <section class={sectionClass}>
-  <img src={imgSrc} alt={title} class={imgClass} />
+  {imgSrcs && Array.isArray(imgSrcs) ? (
+    <div class="about-imgs-column">
+      {imgSrcs.map((src, idx) => (
+        <img src={src} alt={title} class={imgClass} style="margin-bottom: 1rem;" />
+      ))}
+    </div>
+  ) : (
+    <img src={imgSrc} alt={title} class={imgClass} />
+  )}
   <div class="about-content">
     <h2 class="about-title">{title}</h2>
     <p class="about-text">{text}</p>
     {showButton && (
-      <AboutButton href={buttonHref} label={buttonLabel} />
+      <AboutButton href={buttonHref} label={buttonLabel} newTab={buttonNewTab} />
     )}
   </div>
 </section>
@@ -40,6 +47,11 @@ import { Image } from "astro:assets";
     width: 600px;
     max-width: 100%;
   }
+  .about-imgs-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
   .about-content {
     max-width: 700px;
     text-align: left;
@@ -65,6 +77,9 @@ import { Image } from "astro:assets";
       max-width: 350px;
       margin: 0 auto;
       display: block;
+    }
+    .about-imgs-column {
+      align-items: center;
     }
   }
 </style>

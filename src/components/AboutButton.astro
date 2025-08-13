@@ -1,8 +1,14 @@
 ---
-const { href, label } = Astro.props;
+const { href, label, newTab = false } = Astro.props;
 ---
 
-<a href={href} class={`about-button`} data-href={href}>
+<a
+  href={href}
+  class={`about-button`}
+  data-href={href}
+  target={newTab ? "_blank" : undefined}
+  rel={newTab ? "noopener noreferrer" : undefined}
+>
   {label}
 </a>
 
