@@ -1,0 +1,45 @@
+<a class="animated-arrow" aria-label="Scroll down">
+  <img src="/assets/arrow.svg" alt="Scroll down arrow" />
+</a>
+
+<style>
+.animated-arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+.animated-arrow img {
+  width: 48px;
+  height: auto;
+  animation: arrow-bounce 1.2s infinite;
+}
+
+@keyframes arrow-bounce {
+  0%, 100% { transform: translateY(0);}
+  50% { transform: translateY(16px);}
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const arrow = document.querySelector('.animated-arrow');
+  if (arrow) {
+    arrow.addEventListener('click', function(e) {
+      e.preventDefault();
+      const aboutSection = document.getElementById('about');
+      
+      if (aboutSection) {
+        const offsetTop = aboutSection.offsetTop - 45;
+        window.scrollTo({
+          top: offsetTop,
+          behavior: 'smooth'
+        });
+      }
+    });
+  }
+});
+</script>

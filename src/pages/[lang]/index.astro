@@ -13,16 +13,18 @@ export async function getStaticPaths() {
 
 <Layout>
   <Hero />
-  <AboutSection
-    imgSrc="/assets/about/Gameloft01.webp"
-    title={t('mission-title', Astro.params.lang)}
-    text={t('mission-text', Astro.params.lang)}
-    imgPosition="right",
-    imgSize="large",
-    showButton={true},
-    buttonLabel={t('about', Astro.params.lang)},
-    buttonHref={`/${Astro.params.lang}/about`}
-  />
+  <div id="about">
+    <AboutSection
+      imgSrc="/assets/about/Gameloft01.webp"
+      title={t('about-mermelada-title', Astro.params.lang)}
+      text={t('about-text', Astro.params.lang)}
+      imgPosition="right",
+      imgSize="large",
+      showButton={true},
+      buttonLabel={t('about', Astro.params.lang)},
+      buttonHref={`/${Astro.params.lang}/about`}
+    />
+  </div>
   <AboutSection
     imgSrcs={[
       "/assets/mindabyss.webp",

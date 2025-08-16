@@ -1,15 +1,20 @@
-<section class="hero-video-section">
-    <video class="hero-video-bg" autoplay loop muted playsinline poster="/assets/MermeladaGames.svg">
-        <source src="/assets/video.mp4" type="video/mp4">
-    </video>
+---
+import AnimatedArrow from '../components/AnimatedArrow.astro';
+---
+
+<section class="hero-image-section">
+  <div class="hero-image-bg"></div>
   <div class="hero-logos">
     <img src="/assets/mermeSvg2.svg" class="hero-logo-left" alt="Logo"/>
     <img src="/assets/MermeladaGames.svg" class="hero-logo-right" alt="Logo"/>
   </div>
+  <div class="arrow-container">
+    <AnimatedArrow />
+  </div>
 </section>
 
 <style>
-.hero-video-section {
+.hero-image-section {
   position: relative;
   width: 100%;
   height: 100vh;
@@ -19,14 +24,25 @@
   justify-content: center;
 }
 
-.hero-video-bg {
+.hero-image-bg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
+  height: 100vh;
+  background-image: url('/assets/MindsAbyss/MindsAbyss5.webp');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index: -2;
+}
+.hero-image-bg::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.25) 100%);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .hero-logos {
@@ -55,10 +71,33 @@
   margin-left: 1.5rem;
 }
 
+.arrow-container {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width: 767px) {
-  .hero-video-bg {
-    object-fit: contain;
-    object-position:center;
+  .hero-image-section {
+    height: 25vh;
+  }
+  .hero-image-bg {
+    background-size: 100% auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 25vh;
+  }
+  .hero-logos {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
   }
   .hero-logo-left {
     width: 22vw;
@@ -67,6 +106,10 @@
   .hero-logo-right {
     width: 55vw;
     max-width: 260px;
+  }
+  .arrow-container {
+    bottom: 1rem;
+    display: none;
   }
 }
 </style>
