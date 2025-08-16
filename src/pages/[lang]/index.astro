@@ -11,7 +11,7 @@ export async function getStaticPaths() {
 }
 ---
 
-<Layout>
+<Layout description={t('meta-home-description', Astro.params.lang)}>
   <Hero />
   <div id="about">
     <AboutSection
