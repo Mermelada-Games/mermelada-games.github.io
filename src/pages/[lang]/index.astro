@@ -45,15 +45,21 @@ export async function getStaticPaths() {
     lang={Astro.params.lang}
     games={[
       {
-        leftImgs: ["/assets/AresAtlas/Ares6.webp", "/assets/AresAtlas/Ares7.webp"],
-        rightImg: "/assets/AresAtlas/aresatlas_title.svg",
+        leftImgs: [
+          { src: "/assets/AresAtlas/Ares6.webp", alt: "Ares Atlas screenshot" },
+          { src: "/assets/AresAtlas/Ares7.webp", alt: "Ares Atlas screenshot" }
+        ],
+        rightImg: { src: "/assets/AresAtlas/aresatlas_title.svg", alt: "Ares Atlas title" },
         buttonLabel: t('play-game', Astro.params.lang),
         buttonHref: "https://mermelada-games.itch.io/ares-atlas",
         buttonNewTab: true
       },
       {
-        rightImgs: ["/assets/MindsAbyss/MindsAbyss5.webp", "/assets/MindsAbyss/MindsAbyss3.webp"],
-        leftImg: "/assets/MindsAbyss/mindsabyss_title.svg",
+        rightImgs: [
+          { src: "/assets/MindsAbyss/MindsAbyss5.webp", alt: "Minds Abyss screenshot" },
+          { src: "/assets/MindsAbyss/MindsAbyss3.webp", alt: "Minds Abyss screenshot" }
+        ],
+        leftImg: { src: "/assets/MindsAbyss/mindsabyss_title.svg", alt: "Minds Abyss title" },
         buttonLabel: t('play-game', Astro.params.lang),
         buttonHref: "https://mermelada-games.itch.io/mindabyss",
         buttonNewTab: true

@@ -1,11 +1,12 @@
 ---
 import AboutButton from "../components/AboutButton.astro";
 const { games, title } = Astro.props;
+type ImgObj = { src: string; alt: string };
 type GameRow = {
-  leftImgs?: string[];
-  rightImgs?: string[];
-  leftImg?: string;
-  rightImg?: string;
+  leftImgs?: ImgObj[];
+  rightImgs?: ImgObj[];
+  leftImg?: ImgObj;
+  rightImg?: ImgObj;
   buttonLabel: string;
   buttonHref: string;
   buttonNewTab?: boolean;
@@ -19,23 +20,23 @@ type GameRow = {
     return (
       <div class="latest-games-row" style={`flex-direction: ${isInverted ? 'row-reverse' : 'row'};`}>
         <div class="latest-games-images">
-          {!isInverted && row.leftImgs && row.leftImgs.map(src => (
-            <img src={src} class="latest-game-img" />
+          {!isInverted && row.leftImgs && row.leftImgs.map(img => (
+            <img src={img.src} alt={img.alt} class="latest-game-img" />
           ))}
-          {isInverted && row.rightImgs && row.rightImgs.map(src => (
-            <img src={src} class="latest-game-img" />
+          {isInverted && row.rightImgs && row.rightImgs.map(img => (
+            <img src={img.src} alt={img.alt} class="latest-game-img" />
           ))}
         </div>
         <div class="latest-games-main">
           {!isInverted && row.rightImg && (
             <>
-              <img src={row.rightImg} class="latest-game-img main-img" />
+              <img src={row.rightImg.src} alt={row.rightImg.alt} class="latest-game-img main-img" />
               <AboutButton href={row.buttonHref} label={row.buttonLabel} newTab={row.buttonNewTab} />
             </>
           )}
           {isInverted && row.leftImg && (
             <>
-              <img src={row.leftImg} class="latest-game-img main-img" />
+              <img src={row.leftImg.src} alt={row.leftImg.alt} class="latest-game-img main-img" />
               <AboutButton href={row.buttonHref} label={row.buttonLabel} newTab={row.buttonNewTab} />
             </>
           )}
