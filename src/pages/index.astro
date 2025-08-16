@@ -1,3 +1,70 @@
 ---
-return Astro.redirect('/en/');
+import Layout from '../layouts/Layout.astro';
+import AboutSection from '../sections/AboutSection.astro';
+import FollowUs from '../sections/FollowUs.astro';
+import Hero from '../sections/Hero.astro';
+import LatestGamesSection from '../sections/LatestGamesSection.astro';
+import { getLangStaticPaths, t } from '../utils/i18n.js';
+
+export async function getStaticPaths() {
+  return getLangStaticPaths();
+}
 ---
+
+<Layout description={t('meta-home-description', Astro.params.lang)}>
+  <Hero />
+  <div id="about">
+    <AboutSection
+      imgSrc="/assets/about/Gameloft01.webp"
+      title={t('about-mermelada-title', Astro.params.lang)}
+      text={t('about-text', Astro.params.lang)}
+      imgPosition="right",
+      imgSize="large",
+      showButton={true},
+      buttonLabel={t('about', Astro.params.lang)},
+      buttonHref={`/en/about`}
+    />
+  </div>
+  <AboutSection
+    imgSrcs={[
+      "/assets/mindabyss.webp",
+      "/assets/mots.webp",
+      "/assets/stelar.webp",
+      "/assets/aresatlas.webp"
+    ]}
+    title={t('our-games-title', Astro.params.lang)}
+    text={t('our-games', Astro.params.lang)}
+    imgPosition="left"
+    imgSize="large"
+    showButton={true}
+    buttonLabel={t('games', Astro.params.lang)}
+    buttonHref={`/en/games`}
+  />
+  <LatestGamesSection
+    title={t('latest-games-title', Astro.params.lang)}
+    lang={Astro.params.lang}
+    games={[
+      {
+        leftImgs: [
+          { src: "/assets/AresAtlas/Ares6.webp", alt: "Ares Atlas screenshot" },
+          { src: "/assets/AresAtlas/Ares7.webp", alt: "Ares Atlas screenshot" }
+        ],
+        rightImg: { src: "/assets/AresAtlas/aresatlas_title.svg", alt: "Ares Atlas title" },
+        buttonLabel: t('play-game', Astro.params.lang),
+        buttonHref: "https://mermelada-games.itch.io/ares-atlas",
+        buttonNewTab: true
+      },
+      {
+        rightImgs: [
+          { src: "/assets/MindsAbyss/MindsAbyss5.webp", alt: "Minds Abyss screenshot" },
+          { src: "/assets/MindsAbyss/MindsAbyss3.webp", alt: "Minds Abyss screenshot" }
+        ],
+        leftImg: { src: "/assets/MindsAbyss/mindsabyss_title.svg", alt: "Minds Abyss title" },
+        buttonLabel: t('play-game', Astro.params.lang),
+        buttonHref: "https://mermelada-games.itch.io/mindabyss",
+        buttonNewTab: true
+      }
+    ]}
+  />
+  <FollowUs />
+</Layout>

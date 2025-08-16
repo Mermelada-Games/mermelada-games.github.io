@@ -9,7 +9,11 @@ export default function LanguageSwitcher({ lang }) {
 
   function getNewPath(code) {
     const path = window.location.pathname;
-    return path.replace(/^\/(en|ca|es)/, `/${code}`);
+    if (/^\/(en|ca|es)/.test(path)) {
+      return path.replace(/^\/(en|ca|es)/, `/${code}`);
+    } else {
+      return `/${code}${path}`;
+    }
   }
 
   function handleClick() {

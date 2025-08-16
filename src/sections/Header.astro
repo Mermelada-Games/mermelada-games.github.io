@@ -3,7 +3,7 @@ import NavButton from '../components/NavButton.astro';
 import HamburgerMenu from '../components/HamburgerMenu.jsx';
 import { t } from '../utils/i18n.js';
 import LanguageSwitcher from '../components/LanguageSwitcher.jsx';
-const lang = Astro.params?.lang;
+const lang = Astro.params?.lang ?? 'en';
 const navButtons = [
   { label: t('home', lang), href: `/${lang}/` },
   { label: t('games', lang), href: `/${lang}/games` },
