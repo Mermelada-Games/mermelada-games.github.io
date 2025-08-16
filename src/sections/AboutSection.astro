@@ -31,8 +31,8 @@ import { Image } from "astro:assets";
     flex-direction: row;
     width: 100%;
     margin: 3rem 0;
-    padding-left: 20vw;
-    padding-right: 20vw;
+    padding-left: 15vw;
+    padding-right: 15vw;
     gap: 2rem;
   }
   .about-section--reverse {
@@ -42,6 +42,7 @@ import { Image } from "astro:assets";
     width: 300px;
     height: auto;
     border-radius: 1rem;
+    flex-shrink: 0;
   }
   .about-img--large {
     width: 600px;
@@ -51,11 +52,19 @@ import { Image } from "astro:assets";
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    flex-shrink: 0;
   }
   .about-content {
+    flex: 1;
     max-width: 700px;
     text-align: left;
+    min-width: 0;
   }
+
+  .about-section--reverse .about-content {
+    text-align: left;
+  }
+  
   .about-title {
     text-align: left;
     margin-bottom: 1rem;
@@ -63,6 +72,31 @@ import { Image } from "astro:assets";
   .about-text {
     text-align: left;
   }
+
+  @media (max-width: 1200px) {
+    .about-section {
+      flex-direction: column !important;
+      padding-left: 10vw;
+      padding-right: 10vw;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+    .about-img,
+    .about-img--large {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      display: block;
+    }
+    .about-imgs-column {
+      align-items: center;
+    }
+    .about-content {
+      text-align: center;
+      max-width: 100%;
+    }
+  }
+  
   @media (max-width: 767px) {
     .about-section {
       flex-direction: column !important;
