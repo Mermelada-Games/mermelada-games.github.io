@@ -4,10 +4,11 @@ import Header from '../sections/Header.astro';
 import Footer from '../sections/Footer.astro';
 import { ClientRouter } from 'astro:transitions';
 const { name, description } = Astro.props;
+const lang = Astro.params?.lang ?? 'en';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -20,7 +21,30 @@ const { name, description } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{name ? `${name} - Mermelada Games` : "Mermelada Games"}</title>
 		{description && <meta name="description" content={description} />}
+
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://www.mermeladagames.com/" />
+		<meta property="og:title" content="Mermelada Games" />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content="https://mermelada-games.github.io/assets/mermeSvg1.svg" />
+		<meta property="og:site_name" content="Mermelada Games" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content="https://www.mermeladagames.com/" />
+		<meta name="twitter:title" content="Mermelada Games" />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content="https://www.mermeladagames.com/assets/mermeSvg1.svg" />
+
 		<ClientRouter />
+
+		<!-- Google tag (gtag.js) -->
+		<script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-3H2BEQP24K"></script>
+		<script type="text/partytown">
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'G-3H2BEQP24K');
+		</script>
 	</head>
 	<body>
 		<div class="layout-wrapper">
