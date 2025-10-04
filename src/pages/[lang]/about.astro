@@ -11,7 +11,7 @@ export async function getStaticPaths() {
 }
 ---
 
-<Layout description={t('meta-about-description', Astro.params.lang)}>
+<Layout name="About Us" description={t('meta-about-description', Astro.params.lang)}>
   <div class="about-page-sections">
     <AboutSection
       imgSrc="/assets/mermeSvg2.svg"

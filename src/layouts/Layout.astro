@@ -3,7 +3,7 @@ import '../styles/global.css';
 import Header from '../sections/Header.astro';
 import Footer from '../sections/Footer.astro';
 import { ClientRouter } from 'astro:transitions';
-const { description } = Astro.props;
+const { name, description } = Astro.props;
 ---
 
 <!doctype html>
@@ -18,7 +18,7 @@ const { description } = Astro.props;
 
 		<link rel="icon" type="image/svg+xml" href="/assets/mermeSvg1.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Mermelada Games</title>
+		<title>{name ? `${name} - Mermelada Games` : "Mermelada Games"}</title>
 		{description && <meta name="description" content={description} />}
 		<ClientRouter />
 	</head>

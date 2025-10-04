@@ -8,7 +8,7 @@ export async function getStaticPaths() {
 }
 ---
 
-<Layout description={t('meta-games-description', Astro.params.lang)}>
+<Layout name="Games" description={t('meta-games-description', Astro.params.lang)}>
   <div style="display: flex; flex-direction: column; gap: 5rem; margin-bottom: 5rem;">
     <GamesSection />
   </div>
