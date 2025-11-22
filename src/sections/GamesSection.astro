@@ -7,6 +7,13 @@ import { t } from '../utils/i18n.js';
 <section class="games-section">
   <div class="games-list">
     <GameContainer
+      imgSrc="/assets/hexam.webp"
+      title="HEXAM"
+      buttonText={t('view-game', lang)}
+      buttonLink={`/${lang}/hexam`}
+      imgAlt="Hexam"
+    />
+    <GameContainer
       imgSrc="/assets/mots.webp"
       title="MOTS"
       buttonText={t('view-game', lang)}
@@ -48,7 +55,7 @@ import { t } from '../utils/i18n.js';
     display: flex;
     flex-direction: column;
     gap: 0;
-    height: 200vh;
+    height: 250vh;
     justify-content: center;
   }
   .games-scroll-spacer {

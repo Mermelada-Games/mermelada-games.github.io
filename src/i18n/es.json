@@ -19,6 +19,8 @@
   "mots-about": "Mots es un juego de género puzle que promueve la riqueza de la lengua catalana. Está diseñado para jugadores de todas las edades, y contiene mecánicas muy simples apoyadas de efectos visuales tranquilos y relajantes. Si eres un entusiasta de los idiomas o alguien que se quiere relajar, Mots te invita a descubrir, aprender y disfrutar del Catalán. Este es un prototipo que ha sido seleccionado para desarrollarse y ser publicado por GameBCN y 3Cat.",
   "mots-max-fun": "Máxima Diversión - Premios LUDI 2024",
   "mots-selected": "Seleccinado para desarrollar - Premios LUDI 2024",
+  "hexam-about":"Hexam es un juego dirigido a niños de 6 a 8 años, cuyo objetivo es reforzar sus conocimientos en asignaturas como catalán, ciencias, música y matemáticas mediante múltiples rompecabezas y una mecánica muy intuitiva. El aprendizaje se desarrolla a través de dos modos de juego: el modo casual y el modo cronómetro. Los jugadores tendrán que unir, seleccionar, clasificar, elegir y ordenar diferentes conceptos para completar los puzzles.",
+  "hexam-best-replayability":"Millor Rejugabilitat - Premios LUDI 2025",
   "mindsabyss-about": "Mind's Abyss es un juego cooperativo de plataformas en el que dos jugadores asumen los roles de Sueño y Pesadilla. Juntos deben escapar de una mente que se está apagando, mientras navegan por niveles llenos de tensión y trabajo en equipo. ¿Serás capaz de recuperar todos los fragmentos de memoria para mantener esta mente viva?",
   "mindsabyss-best-game": "Mejor Juego - CITM Game Jam 2024",
   "aresatlas-about": "Toma el papel de Ares, una exploradora que viaja a través de diferentes localizaciones por todo el mundo. Cada nivel te reta a completar diferentes partidas, en las que tus intentos previos aparecen como “fantasmas” que debes evitar. En consecuencia, cada nivel es progresivamente más intenso. Además, también serás capaz de viajar entre el 2D y el 3D durante tus partidas para lograr tus objetivos.",
@@ -39,5 +41,6 @@
   "meta-aresatlas-description": "Ares Atlas es un desafiante juego de plataformas de Mermelada Games. Evita tus propios fantasmas y cambia entre mundos 2D y 3D.",
   "meta-mindsabyss-description": "Mind's Abyss es un juego cooperativo de plataformas donde dos jugadores escapan de una mente que se apaga. Trabajo en equipo y tensión asegurados.",
   "meta-mots-description": "Mots es un juego de puzles de palabras que celebra la lengua catalana. Relájate, aprende y disfruta de puzles únicos.",
-  "meta-stelar-description": "Stelar es un relajante juego de puzles 2D donde conectas estrellas para formar constelaciones. Despierta tu creatividad y curiosidad."
+  "meta-stelar-description": "Stelar es un relajante juego de puzles 2D donde conectas estrellas para formar constelaciones. Despierta tu creatividad y curiosidad.",
+  "meta-hexam-description": "Hexam es un juego de puzles educativo diseñado para niños de 6 a 8 años. Refuerza los conocimientos en asignaturas como catalán, ciencias, música y matemáticas mediante una jugabilidad intuitiva y puzzles atractivos."
 }

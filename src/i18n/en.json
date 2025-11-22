@@ -16,6 +16,8 @@
   "view-game": "VIEW THE GAME",
   "play-game": "PLAY THE GAME",
   "game-about": "About the game",
+  "hexam-about":"Hexam is a game aimed at children aged 6 to 8, with the aim of reinforcing their knowledge in subjects such as catalan, science, music, and mathematics through multiple puzzles and highly intuitive mechanics. Learning takes place through two different game modes, there is the casual mode and the chrono mode. Players will have to match, select, classify, choose and order different concepts to complete the puzzles.",
+  "hexam-best-replayability":"Best Replayability Award - LUDI awards 2025",
   "mots-about": "Mots is a cozy, replayable word puzzle game that promotes the richness of the Catalan language. Designed for players of all ages, it simple mechanics with charming visuals and relaxing gameplay. Whether you're a language lover or just looking for a mindful break, Mots invites you to discover, learn, and enjoy Catalan, one word at a time. It is a prototype that has been selected as a project to be developed and published by GameBCN and 3Cat.",
   "mots-max-fun": "Maximum Fun Award - LUDI awards 2024",
   "mots-selected": "Selected for further development - LUDI awards 2024",
@@ -39,5 +41,6 @@
   "meta-aresatlas-description": "Ares Atlas is a challenging platformer by Mermelada Games. Avoid your own ghosts and switch between 2D and 3D worlds.",
   "meta-mindsabyss-description": "Mind's Abyss is a fast-paced cooperative platformer where two players escape a dying mind. Teamwork and tension guaranteed.",
   "meta-mots-description": "Mots is a cozy word puzzle game that celebrates the Catalan language. Relax, learn, and enjoy unique puzzles.",
-  "meta-stelar-description": "Stelar is a relaxing 2D puzzle game where you connect stars to form constellations. Spark your creativity and curiosity."
+  "meta-stelar-description": "Stelar is a relaxing 2D puzzle game where you connect stars to form constellations. Spark your creativity and curiosity.",
+  "meta-hexam-description": "Hexam is an educational puzzle game designed for children aged 6 to 8. Reinforce knowledge in subjects like Catalan, science, music, and math through intuitive gameplay and engaging puzzles."
 }

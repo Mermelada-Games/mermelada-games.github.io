@@ -1,0 +1,90 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import AwardsSection from '../../sections/AwardsSection.astro';
+import GameInfoSection from '../../sections/GameInfoSection.astro';
+import GameTrailerSection from '../../sections/GameTrailerSection.astro';
+import GameContainer from '../../components/GameContainer.astro';
+import GalleryCarousel from '../../components/GalleryCarousel.jsx';
+import { getLangStaticPaths, t } from '../../utils/i18n.js';
+
+export async function getStaticPaths() {
+  return getLangStaticPaths();
+}
+
+const { lang } = Astro.params;
+
+const galleryImages = [
+  {
+    src: '/assets/hexam/Hexam1.webp',
+    alt: 'Hexam 1'
+  },
+  {
+    src: '/assets/hexam/Hexam2.webp',
+    alt: 'Hexam 2'
+  },
+  {
+    src: '/assets/hexam/Hexam3.webp',
+    alt: 'Hexam 3'
+  },
+  {
+    src: '/assets/hexam/Hexam4.webp',
+    alt: 'Hexam 4'
+  },
+  {
+    src: '/assets/hexam/Hexam5.webp',
+    alt: 'Hexam 5'
+  },
+  {
+    src: '/assets/hexam/Hexam6.webp',
+    alt: 'Hexam 6'
+  },
+  {
+    src: '/assets/hexam/Hexam7.webp',
+    alt: 'Hexam 7'
+  },
+];
+---
+
+<Layout name="Hexam" description={t('meta-hexam-description', Astro.params.lang)}>
+    <main class="game-page">
+
+        <GameContainer 
+            imgSrc="/assets/hexam.webp"
+            title="HEXAM"
+            showButton={false}
+            showOverlay={false}
+        />
+
+        <GameTrailerSection 
+            videoId="YCgGi_d-GA0"
+            title="Game Trailer"
+            controls={true}
+            modestbranding={true}
+            showButton={true}
+            buttonLink="https://mermelada-games.itch.io/hexam/"
+        />
+
+        <GameInfoSection 
+            title={t('game-about', lang)}
+            text={t('hexam-about', lang)}
+            imageSrc='/assets/hexam/hexam_title.svg'
+        />
+
+        <GalleryCarousel images={galleryImages} client:load />
+
+        <AwardsSection awards={[
+            {
+                title: t('hexam-best-replayability', lang),
+            }
+        ]} />
+
+    </main>
+</Layout>
+
+<style>
+    .game-page {
+        min-height: 100vh;
+        padding: 0;
+        background-color: var(--background-color);
+    }
+</style>
