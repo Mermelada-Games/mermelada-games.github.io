@@ -3,8 +3,14 @@ import '../styles/global.css';
 import Header from '../sections/Header.astro';
 import Footer from '../sections/Footer.astro';
 import { ClientRouter } from 'astro:transitions';
+
 const { name, description } = Astro.props;
 const lang = Astro.params?.lang ?? 'en';
+const baseUrl = "https://www.mermeladagames.com";
+
+let path = Astro.url.pathname.replace(`/${lang}`, "");
+if (path === "/") path = "";
+const supportedLangs = ['es', 'ca', 'en'];
 ---
 
 <!doctype html>
@@ -22,14 +28,21 @@ const lang = Astro.params?.lang ?? 'en';
 		<title>{name ? `${name} - Mermelada Games` : "Mermelada Games"}</title>
 		{description && <meta name="description" content={description} />}
 
+		<link rel="canonical" href={`${baseUrl}${lang === 'en' && path === '' ? '/' : `/${lang}${path}`}`} />
+
+		{supportedLangs.map(l => (
+			<link rel="alternate" hreflang={l} href={`${baseUrl}/${l}${path}`} />
+		))}
+		<link rel="alternate" hreflang="x-default" href={`${baseUrl}/`} />
+
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://www.mermeladagames.com/" />
+		<meta property="og:url" content={`${baseUrl}${lang === 'en' && path === '' ? '/' : `/${lang}${path}`}`} />
 		<meta property="og:title" content="Mermelada Games" />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content="https://mermelada-games.github.io/assets/mermeSvg1.svg" />
 		<meta property="og:site_name" content="Mermelada Games" />
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:url" content="https://www.mermeladagames.com/" />
+		<meta name="twitter:url" content={`${baseUrl}${lang === 'en' && path === '' ? '/' : `/${lang}${path}`}`} />
 		<meta name="twitter:title" content="Mermelada Games" />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content="https://www.mermeladagames.com/assets/mermeSvg1.svg" />
