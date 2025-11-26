@@ -19,6 +19,8 @@ const supportedLangs = ['es', 'ca', 'en'];
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 
+		<meta name="robots" content="index, follow" />
+
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
@@ -39,13 +41,46 @@ const supportedLangs = ['es', 'ca', 'en'];
 		<meta property="og:url" content={`${baseUrl}${lang === 'en' && path === '' ? '/' : `/${lang}${path}`}`} />
 		<meta property="og:title" content="Mermelada Games" />
 		<meta property="og:description" content={description} />
-		<meta property="og:image" content="https://mermelada-games.github.io/assets/mermeSvg1.svg" />
+		<meta property="og:image" content="https://www.mermeladagames.com/assets/merme.png" />
 		<meta property="og:site_name" content="Mermelada Games" />
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:url" content={`${baseUrl}${lang === 'en' && path === '' ? '/' : `/${lang}${path}`}`} />
 		<meta name="twitter:title" content="Mermelada Games" />
 		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content="https://www.mermeladagames.com/assets/mermeSvg1.svg" />
+		<meta name="twitter:image" content="https://www.mermeladagames.com/assets/merme.png" />
+
+		
+		<script type="application/ld+json" is:inline>
+		[
+			{
+				"@context": "https://schema.org",
+				"@type": "Organization",
+				"name": "Mermelada Games",
+				"url": "https://www.mermeladagames.com",
+				"logo": "https://www.mermeladagames.com/assets/mermeSvg1.svg",
+				"description": "Mermelada Games is a Barcelona-based indie studio making unique, fun, and creative video games. Discover our latest games and meet the team.",
+				"email": "gamesmermelada@gmail.com",
+				"sameAs": [
+					"https://mermelada-games.itch.io/",
+					"https://www.instagram.com/mermelada.games/",
+					"https://www.linkedin.com/company/mermeladagames",
+					"https://x.com/gamesmermelada",
+					"https://www.youtube.com/@MermeladaGames"
+				]
+			},
+			{
+				"@context": "https://schema.org",
+				"@type": "WebSite",
+				"name": "Mermelada Games",
+				"url": "https://www.mermeladagames.com",
+				"description": "Mermelada Games is a Barcelona-based indie studio making unique, fun, and creative video games. Discover our latest games and meet the team.",
+				"publisher": {
+						"@type": "Organization",
+						"name": "Mermelada Games"
+				}
+			}
+		]
+		</script>
 
 		<ClientRouter />
 
